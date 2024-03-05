@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{%static 'css/profile.css'%}">
+    <title>{{user.username}}</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1> {{photo.user.username}}</h1>
+    
+<div class="profile-pict">
+<center>
+    <img src="{{ photo.image.url}}" alt="Profile Picture" width="30%" 
+    height="30%" id="profilePhoto">
+</center>
+</div>
+
+<p clas='userInfo'>User's Full Name: {{photo.user.full_name}}</p>
+<p clas='userInfo'>User's Contact Email: {{photo.user.contact_email}}</p>
+
+</div>
+{%if posts%}
+    <section id="posts">
+        <h2>Posts by {{user.username}}:</h2>
+        {% for post in posts %}
+        <div class="post">
+            <div class="user-info">
+                <span class="username"><p class="post_author">{{ post.author.full_name}}<p></span>
+            </div>
+            <div class="post-content">
+                {% if post.image %}
+                <p>Uploaded at: {{ post.upload_time }}</p>
+                <p>{{ post.description }}</p>
+                <img src="{{ post.image.url }}" alt="Post Image" width="30%" 
+                    height="30%">
+                {% endif %}
+
+                <div class="reactions" >
+                    <button id='likebtn{{post.id}}' onclick='like({{post.id}}) ' >Like</button>
+                    <button onclick='comment()'>Comment</button>
+                    <button onclick='share()'>Share</button>
+                </div>
+            </div>
+        </div> 
+        {% endfor %}
+    </section>
+{%endif%}
+</div>
+<script src='{%static 'js/reactions.js'%}'> 
+</script>
+</body>
+</html>

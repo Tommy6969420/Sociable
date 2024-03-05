@@ -1,0 +1,24 @@
+
+{%load static%}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<div class="form-control">
+<form action="{% url 'login' %}" method='post'>
+            {%csrf_token%}
+            <div class="response">
+                <p>{{response}}</p>
+            </div>
+            <div class="inputSection">
+                
+                <label for="Username" class="username">Username</label>
+                <input type="text" placeholder = "Enter Your Username" name="username" required>
+            </div>
+            <div class="inputSection">
+                <label for="Password" class="password">Password</label>
+                <input type="text" name="password" placeholder = "Please Enter a Valid Password" required>
+            </div>
+        
+        <button type='submit' style="border:3px solid blue;border-radius:30%;background-color:aqua;" class="btn">Login</button>
+    </form>
+</div>

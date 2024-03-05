@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    {% block head %}{% endblock head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Header content: Logo, Navigation, etc. -->
+        <h1>Welcome to Sociable: {{ name }}</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Friends</a></li>
+                <li><a href="#">Messages</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block body %}
+    {% endblock body %}
+
+    <!-- Footer -->
+    <footer>
+        <!-- Footer content: Copyright, Links, etc. -->
+        <p>&copy; 2024 Sociable</p>
+    </footer>
+
+</body>
+</html>

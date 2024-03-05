@@ -1,0 +1,39 @@
+{%extends 'users/base.html'%}
+{%block title%}
+Signup
+{%endblock%}
+{%block head%}
+
+{%load static%}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+$( function() {
+  $( "#id_date_of_birth" ).datepicker();
+} );
+</script>
+<style>
+.genderBtn{
+  border-radius:50%;
+}
+
+</style>
+{%endblock head%}
+{%block body%}
+
+<h2>Signup</h2>
+<h3>Already signed up? <a href="{%url 'login'%}"> click here </a> to login</h3>
+<h4>{{msg}}</h4>
+<form  action="{% url 'index'%}" method='post'> 
+{%csrf_token%}
+    {{form.as_div}}
+<input type="submit" value="submit">
+</form>
+<script src="{%static 'js/form_validation.js'%}"
+
+{%endblock%}

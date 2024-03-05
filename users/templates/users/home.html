@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Add CSS links for styling -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Header content: Logo, Navigation, etc. -->
+        <h1>Welcome to Sociable: {{ name }}</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="{%url 'profile' name %}">Profile</a></li>
+                <li><a href="#">Friends</a></li>
+                <li><a href="#">Messages</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Friends Section -->
+        <section id="friends">
+            <h2>Friends</h2>
+            <ul>
+                <li>Friend 1</li>
+                <li>Friend 2</li>
+                <li>Friend 3</li>
+                <!-- Add more friends dynamically -->
+            </ul>
+
+
+        </section>
+        <section id="upload">
+            <div class="form-control">
+            
+                <form id="uploadForm" enctype="multipart/form-data" action="{%url 'home' name  %}" method="post">
+                    {% csrf_token %}
+            {{form.as_div}}
+            <input type="submit" value="post">
+            </form>
+            
+            </div>
+            </section>
+        <!-- Posts Section -->
+        <section id="posts">
+            <h2>Posts</h2>
+            {% for post in posts %}
+            <div class="post">
+                <div class="user-info">
+                    <span class="username"><p class="post_author">{{ post.author.full_name}}<p></span>
+                </div>
+                <div class="post-content">
+                    {% if post.image %}
+                    <p>Uploaded at: {{ post.upload_time }}</p>
+                    <p>{{ post.description }}</p>
+                    <img src="{{post.image.url}}" alt="Post Image" width="40%" 
+                        height="40%">
+                    {% endif %}
+
+                    <div class="reactions" >
+                        <button id='likebtn{{post.id}}' onclick='like({{post.id}}) ' >Like</button>
+                        <button onclick='comment()'>Comment</button>
+                        <button onclick='share()'>Share</button>
+                    </div>
+                </div>
+            </div> 
+            {% endfor %}
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Footer content: Copyright, Links, etc. -->
+        <p>&copy; 2024 Sociable</p>
+    </footer>
+    <script src='{%static 'js/reactions.js'%}'> 
+    </script>
+</body>
+</html>

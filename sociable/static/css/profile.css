@@ -1,0 +1,64 @@
+body {
+    background:beige;
+}
+#profilePhoto{
+border: 10px solid rgb(20, 173, 245);
+border-radius: 50%;
+
+} 
+
+.container{
+    font-weight:bold;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.post_author{
+
+    font-weight: bold;
+    font-size: 1.1em;
+    
+
+}
+
+.post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.post .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post .user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post .post-content p {
+    margin-bottom: 10px;
+}
+
+.reactions button {
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
